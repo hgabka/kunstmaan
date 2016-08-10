@@ -48,6 +48,7 @@ class AppKernel extends Kernel
             new Webtown\KunstmaanExtensionBundle\WebtownKunstmaanExtensionBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
             //new Kunstmaan\LeadGenerationBundle\KunstmaanLeadGenerationBundle(),
+            new KumaTest\PublicBundle\KumaTestPublicBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev'), true)) {

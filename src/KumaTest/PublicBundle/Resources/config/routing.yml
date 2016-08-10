@@ -1,0 +1,5 @@
+kumatestpublicbundle_default:
+    resource: '@KumaTestPublicBundle/Controller/DefaultController.php'
+    type:     annotation
+    prefix:   /
+

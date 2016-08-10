@@ -213,7 +213,7 @@ kunstmaan_translator:
     managed_locales: ['nl', 'en', 'de', 'fr']
 
 kunstmaan_admin:
-    admin_password: -adminpwd-
+    admin_password: 8ZOJ0oge
     dashboard_route: 'kunstmaan_dashboard'
     default_admin_locale: "%defaultlocale%"
     admin_locales: ["%defaultlocale%"]

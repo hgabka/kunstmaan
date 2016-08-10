@@ -1,0 +1,16 @@
+name: Main
+context: main
+types:
+    - { name: Audio, class: KumaTest\PublicBundle\Entity\PageParts\AudioPagePart }
+    - { name: Button, class: KumaTest\PublicBundle\Entity\PageParts\ButtonPagePart }
+    - { name: Download, class: KumaTest\PublicBundle\Entity\PageParts\DownloadPagePart }
+    - { name: Header, class: KumaTest\PublicBundle\Entity\PageParts\HeaderPagePart }
+    - { name: Image, class: KumaTest\PublicBundle\Entity\PageParts\ImagePagePart }
+    - { name: IntroText, class: KumaTest\PublicBundle\Entity\PageParts\IntroTextPagePart }
+    - { name: Line, class: KumaTest\PublicBundle\Entity\PageParts\LinePagePart }
+    - { name: Link, class: KumaTest\PublicBundle\Entity\PageParts\LinkPagePart }
+    - { name: RawHtml, class: KumaTest\PublicBundle\Entity\PageParts\RawHtmlPagePart }
+    - { name: Text, class: KumaTest\PublicBundle\Entity\PageParts\TextPagePart }
+    - { name: Toc, class: KumaTest\PublicBundle\Entity\PageParts\TocPagePart }
+    - { name: ToTop, class: KumaTest\PublicBundle\Entity\PageParts\ToTopPagePart }
+    - { name: Video, class: KumaTest\PublicBundle\Entity\PageParts\VideoPagePart }

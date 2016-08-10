@@ -11,22 +11,22 @@ parameters:
     mailer_user:                ~
     mailer_password:            ~
 
-    locale:                     en
+    locale:                     hu
     secret:                     ThisTokenIsNotSoSecretChangeIt
 
     debug_toolbar:              true
     debug_redirects:            false
-    use_assetic_controller:     true
+    use_assetic_controller:     false
 
-    requiredlocales:            nl|fr|de|en
-    defaultlocale:              en
-    multilanguage:              true
+    requiredlocales:            hu
+    defaultlocale:              hu
+    multilanguage:              false
 
     sentry.dsn:                 https://XXXXXXXX:XXXXXXXX@app.getsentry.com/XXXX
 
     cdnpath:                    ~
 
-    websitetitle:               MyProject
+    websitetitle:               KumaTest
     session_prefix:             %database_name%
 
     searchport:                 9200
