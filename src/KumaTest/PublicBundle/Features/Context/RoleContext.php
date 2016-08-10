@@ -22,11 +22,11 @@ class RoleContext extends BehatContext
      */
     public function iFillInCorrectRoleInformationForRole($roleName)
     {
-        $steps = array();
+        $steps = [];
 
-        $records = array(
-            "role[role]" => $this->getMainContext()->fixStepArgument($roleName)
-        );
+        $records = [
+            'role[role]' => $this->getMainContext()->fixStepArgument($roleName)
+        ];
         foreach ($records as $field => $value) {
             $steps[] = new Step\When("I fill in \"$field\" with \"$value\"");
         }

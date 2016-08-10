@@ -2,10 +2,10 @@
 
 namespace KumaTest\PublicBundle\Form\PageParts;
 
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * IntroTextPagePartAdminType
@@ -17,8 +17,9 @@ class IntroTextPagePartAdminType extends AbstractType
      *
      * This method is called for each type in the hierarchy starting form the
      * top most type. Type extensions can further modify the form.
+     *
      * @param FormBuilderInterface $builder The form builder
-     * @param array $options The options
+     * @param array                $options The options
      *
      * @see FormTypeExtensionInterface::buildForm()
      */
@@ -26,10 +27,10 @@ class IntroTextPagePartAdminType extends AbstractType
     {
         parent::buildForm($builder, $options);
 
-        $builder->add('content', TextareaType::class, array(
+        $builder->add('content', TextareaType::class, [
             'required' => true,
-            'attr' => array('rows' => 10, 'cols' => 600, 'class' => 'js-rich-editor rich-editor', 'height' => 120)
-        ));
+            'attr' => ['rows' => 10, 'cols' => 600, 'class' => 'js-rich-editor rich-editor', 'height' => 120]
+        ]);
     }
 
     /**
@@ -49,8 +50,8 @@ class IntroTextPagePartAdminType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => '\KumaTest\PublicBundle\Entity\PageParts\IntroTextPagePart'
-        ));
+        ]);
     }
 }

@@ -19,7 +19,7 @@ class TocPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-	return 'KumaTestPublicBundle:PageParts:TocPagePart/view.html.twig';
+        return 'KumaTestPublicBundle:PageParts:TocPagePart/view.html.twig';
     }
 
     /**
@@ -29,6 +29,6 @@ class TocPagePart extends AbstractPagePart
      */
     public function getDefaultAdminType()
     {
-	return new \KumaTest\PublicBundle\Form\PageParts\TocPagePartAdminType();
+        return new \KumaTest\PublicBundle\Form\PageParts\TocPagePartAdminType();
     }
 }

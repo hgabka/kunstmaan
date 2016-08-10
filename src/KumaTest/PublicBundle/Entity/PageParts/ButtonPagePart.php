@@ -30,7 +30,7 @@ class ButtonPagePart extends AbstractPagePart
     private $linkUrl;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="link_new_window", type="boolean", nullable=true)
      */
@@ -80,60 +80,60 @@ class ButtonPagePart extends AbstractPagePart
     /**
      * @var array Supported types
      */
-    public static $types = array(
-	self::TYPE_PRIMARY,
-	self::TYPE_SECONDARY,
-	self::TYPE_TERTIARY,
-	self::TYPE_QUATERNARY,
-	self::TYPE_LINK
-    );
+    public static $types = [
+    self::TYPE_PRIMARY,
+    self::TYPE_SECONDARY,
+    self::TYPE_TERTIARY,
+    self::TYPE_QUATERNARY,
+    self::TYPE_LINK
+    ];
 
     /**
      * @var array Supported sizes
      */
-    public static $sizes = array(
-	self::SIZE_EXTRA_LARGE,
-	self::SIZE_LARGE,
-	self::SIZE_DEFAULT,
-	self::SIZE_SMALL,
-	self::SIZE_EXTRA_SMALL
-    );
+    public static $sizes = [
+    self::SIZE_EXTRA_LARGE,
+    self::SIZE_LARGE,
+    self::SIZE_DEFAULT,
+    self::SIZE_SMALL,
+    self::SIZE_EXTRA_SMALL
+    ];
 
     /**
      * @var array Supported positions
      */
-    public static $positions = array(
-	self::POSITION_LEFT,
-	self::POSITION_CENTER,
-	self::POSITION_RIGHT,
-	self::POSITION_BLOCK
-    );
+    public static $positions = [
+    self::POSITION_LEFT,
+    self::POSITION_CENTER,
+    self::POSITION_RIGHT,
+    self::POSITION_BLOCK
+    ];
 
     public function __construct()
     {
-	$this->type = self::TYPE_PRIMARY;
-	$this->size = self::SIZE_DEFAULT;
-	$this->position = self::POSITION_LEFT;
+        $this->type = self::TYPE_PRIMARY;
+        $this->size = self::SIZE_DEFAULT;
+        $this->position = self::POSITION_LEFT;
     }
 
     /**
-     * @param boolean $linkNewWindow
+     * @param bool $linkNewWindow
      *
      * @return ButtonPagePart
      */
     public function setLinkNewWindow($linkNewWindow)
     {
-	$this->linkNewWindow = $linkNewWindow;
+        $this->linkNewWindow = $linkNewWindow;
 
-	return $this;
+        return $this;
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isLinkNewWindow()
     {
-	return $this->linkNewWindow;
+        return $this->linkNewWindow;
     }
 
     /**
@@ -143,9 +143,9 @@ class ButtonPagePart extends AbstractPagePart
      */
     public function setLinkText($linkText)
     {
-	$this->linkText = $linkText;
+        $this->linkText = $linkText;
 
-	return $this;
+        return $this;
     }
 
     /**
@@ -153,7 +153,7 @@ class ButtonPagePart extends AbstractPagePart
      */
     public function getLinkText()
     {
-	return $this->linkText;
+        return $this->linkText;
     }
 
     /**
@@ -163,9 +163,9 @@ class ButtonPagePart extends AbstractPagePart
      */
     public function setLinkUrl($linkUrl)
     {
-	$this->linkUrl = $linkUrl;
+        $this->linkUrl = $linkUrl;
 
-	return $this;
+        return $this;
     }
 
     /**
@@ -173,25 +173,27 @@ class ButtonPagePart extends AbstractPagePart
      */
     public function getLinkUrl()
     {
-	return $this->linkUrl;
+        return $this->linkUrl;
     }
 
     /**
      * Set type
      *
      * @param string $type
+     *
      * @return ButtonPagePart
+     *
      * @throws \InvalidArgumentException
      */
     public function setType($type)
     {
-	if (!in_array($type, self::$types)) {
-	    throw new \InvalidArgumentException("Type $type not supported");
-	}
+        if (!in_array($type, self::$types)) {
+            throw new \InvalidArgumentException("Type $type not supported");
+        }
 
-	$this->type = $type;
+        $this->type = $type;
 
-	return $this;
+        return $this;
     }
 
     /**
@@ -201,24 +203,26 @@ class ButtonPagePart extends AbstractPagePart
      */
     public function getType()
     {
-	return $this->type;
+        return $this->type;
     }
 
     /**
      * Set size
      *
      * @param string $size
+     *
      * @return ButtonPagePart
+     *
      * @throws \InvalidArgumentException
      */
     public function setSize($size)
     {
-	if (!in_array($size, self::$sizes)) {
-	    throw new \InvalidArgumentException("Size $size not supported");
-	}
-	$this->size = $size;
+        if (!in_array($size, self::$sizes)) {
+            throw new \InvalidArgumentException("Size $size not supported");
+        }
+        $this->size = $size;
 
-	return $this;
+        return $this;
     }
 
     /**
@@ -228,24 +232,26 @@ class ButtonPagePart extends AbstractPagePart
      */
     public function getSize()
     {
-	return $this->size;
+        return $this->size;
     }
 
     /**
      * Set position
      *
      * @param string $position
+     *
      * @return ButtonPagePart
+     *
      * @throws \InvalidArgumentException
      */
     public function setPosition($position)
     {
-	if (!in_array($position, self::$positions)) {
-	    throw new \InvalidArgumentException("Position $position not supported");
-	}
-	$this->position = $position;
+        if (!in_array($position, self::$positions)) {
+            throw new \InvalidArgumentException("Position $position not supported");
+        }
+        $this->position = $position;
 
-	return $this;
+        return $this;
     }
 
     /**
@@ -255,7 +261,7 @@ class ButtonPagePart extends AbstractPagePart
      */
     public function getPosition()
     {
-	return $this->position;
+        return $this->position;
     }
 
     /**
@@ -265,7 +271,7 @@ class ButtonPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-	return 'KumaTestPublicBundle:PageParts:ButtonPagePart/view.html.twig';
+        return 'KumaTestPublicBundle:PageParts:ButtonPagePart/view.html.twig';
     }
 
     /**
@@ -275,6 +281,6 @@ class ButtonPagePart extends AbstractPagePart
      */
     public function getDefaultAdminType()
     {
-	return new \KumaTest\PublicBundle\Form\PageParts\ButtonPagePartAdminType();
+        return new \KumaTest\PublicBundle\Form\PageParts\ButtonPagePartAdminType();
     }
 }

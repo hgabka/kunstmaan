@@ -36,9 +36,9 @@ class HomePageAdminType extends PageAdminType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'KumaTest\PublicBundle\Entity\Pages\HomePage'
-        ));
+        ]);
     }
 
     /**

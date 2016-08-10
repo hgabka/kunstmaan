@@ -3,13 +3,13 @@
 namespace KumaTest\PublicBundle\Form\PageParts;
 
 use KumaTest\PublicBundle\Entity\PageParts\ButtonPagePart;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\AbstractType;
 use Kunstmaan\NodeBundle\Form\Type\URLChooserType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * ButtonPagePartAdminType
@@ -21,8 +21,9 @@ class ButtonPagePartAdminType extends AbstractType
      *
      * This method is called for each type in the hierarchy starting form the
      * top most type. Type extensions can further modify the form.
+     *
      * @param FormBuilderInterface $builder The form builder
-     * @param array $options The options
+     * @param array                $options The options
      *
      * @see FormTypeExtensionInterface::buildForm()
      */
@@ -30,33 +31,33 @@ class ButtonPagePartAdminType extends AbstractType
     {
         parent::buildForm($builder, $options);
 
-        $builder->add('linkUrl', URLChooserType::class, array(
+        $builder->add('linkUrl', URLChooserType::class, [
             'required' => true
-        ));
-        $builder->add('linkText', TextType::class, array(
+        ]);
+        $builder->add('linkText', TextType::class, [
             'required' => true
-        ));
-        $builder->add('linkNewWindow', CheckboxType::class, array(
+        ]);
+        $builder->add('linkNewWindow', CheckboxType::class, [
             'required' => false,
-        ));
-        $builder->add('type', ChoiceType::class, array(
+        ]);
+        $builder->add('type', ChoiceType::class, [
             'choices' => array_combine(ButtonPagePart::$types, ButtonPagePart::$types),
             'placeholder' => false,
             'required' => true,
                 'choices_as_values' => true
-        ));
-        $builder->add('size', ChoiceType::class, array(
+        ]);
+        $builder->add('size', ChoiceType::class, [
             'choices' => array_combine(ButtonPagePart::$sizes, ButtonPagePart::$sizes),
             'placeholder' => false,
             'required' => true,
                 'choices_as_values' => true
-        ));
-        $builder->add('position', ChoiceType::class, array(
+        ]);
+        $builder->add('position', ChoiceType::class, [
             'choices' => array_combine(ButtonPagePart::$positions, ButtonPagePart::$positions),
             'placeholder' => false,
             'required' => true,
                 'choices_as_values' => true
-        ));
+        ]);
     }
 
     /**
@@ -76,8 +77,8 @@ class ButtonPagePartAdminType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => '\KumaTest\PublicBundle\Entity\PageParts\ButtonPagePart'
-        ));
+        ]);
     }
 }

@@ -23,16 +23,16 @@ class MediaContext extends BehatContext
      */
     public function iFillInCorrectFileInformationFor($fileType)
     {
-        $fileTypes = array(
-            "image" => "image.png",
-            "pdf" => "pdf.pdf"
-        );
+        $fileTypes = [
+            'image' => 'image.png',
+            'pdf' => 'pdf.pdf'
+        ];
 
-        $steps = array();
+        $steps = [];
 
-        $records = array(
-            "kunstmaan_mediabundle_filetype[name]" => $this->getMainContext()->fixStepArgument($fileType)
-        );
+        $records = [
+            'kunstmaan_mediabundle_filetype[name]' => $this->getMainContext()->fixStepArgument($fileType)
+        ];
         foreach ($records as $field => $value) {
             $steps[] = new Step\When("I fill in \"$field\" with \"$value\"");
         }
@@ -47,7 +47,7 @@ class MediaContext extends BehatContext
      */
     public function iDeleteImage()
     {
-        $this->getMainContext()->iAmOnASpecificPage("image");
+        $this->getMainContext()->iAmOnASpecificPage('image');
         $this->performDelete();
     }
 
@@ -56,7 +56,7 @@ class MediaContext extends BehatContext
      */
     public function iDeleteFile()
     {
-        $this->getMainContext()->iAmOnASpecificPage("file");
+        $this->getMainContext()->iAmOnASpecificPage('file');
         $this->performDelete();
     }
 
@@ -70,16 +70,16 @@ class MediaContext extends BehatContext
      */
     public function iFillInCorrectInformationForSlide($slideType, $slideName)
     {
-        $slideCodes = array(
-            "slideshare" => "13842545"
-        );
+        $slideCodes = [
+            'slideshare' => '13842545'
+        ];
 
-        $steps = array();
+        $steps = [];
 
-        $records = array(
-            "kunstmaan_mediabundle_slidetype[name]" => $this->getMainContext()->fixStepArgument($slideName),
-            "kunstmaan_mediabundle_slidetype[code]" => $slideCodes[$slideType]
-        );
+        $records = [
+            'kunstmaan_mediabundle_slidetype[name]' => $this->getMainContext()->fixStepArgument($slideName),
+            'kunstmaan_mediabundle_slidetype[code]' => $slideCodes[$slideType]
+        ];
         foreach ($records as $field => $value) {
             $steps[] = new Step\When("I fill in \"$field\" with \"$value\"");
         }
@@ -94,7 +94,7 @@ class MediaContext extends BehatContext
      */
     public function iDeleteSlide()
     {
-        $this->getMainContext()->iAmOnASpecificPage("slide");
+        $this->getMainContext()->iAmOnASpecificPage('slide');
         $this->performDelete();
     }
 
@@ -108,18 +108,18 @@ class MediaContext extends BehatContext
      */
     public function iFillInCorrectInformationForVideo($videoType, $videoName)
     {
-        $videoCodes = array(
-            "youtube" => "cfSaztUiw5s",
-            "vimeo" => "54269169",
-            "dailymotion" => "xr8509_raw-video-spacex-dragon-leaves-space-station_tech"
-        );
+        $videoCodes = [
+            'youtube' => 'cfSaztUiw5s',
+            'vimeo' => '54269169',
+            'dailymotion' => 'xr8509_raw-video-spacex-dragon-leaves-space-station_tech'
+        ];
 
-        $steps = array();
+        $steps = [];
 
-        $records = array(
-            "kunstmaan_mediabundle_videotype[name]" => $this->getMainContext()->fixStepArgument($videoName),
-            "kunstmaan_mediabundle_videotype[code]" => $videoCodes[$videoType]
-        );
+        $records = [
+            'kunstmaan_mediabundle_videotype[name]' => $this->getMainContext()->fixStepArgument($videoName),
+            'kunstmaan_mediabundle_videotype[code]' => $videoCodes[$videoType]
+        ];
         foreach ($records as $field => $value) {
             $steps[] = new Step\When("I fill in \"$field\" with \"$value\"");
         }
@@ -134,7 +134,7 @@ class MediaContext extends BehatContext
      */
     public function iDeleteVideo()
     {
-        $this->getMainContext()->iAmOnASpecificPage("video");
+        $this->getMainContext()->iAmOnASpecificPage('video');
         $this->performDelete();
     }
 
@@ -147,13 +147,13 @@ class MediaContext extends BehatContext
      */
     public function iCreateSubFolder($folderName)
     {
-        $records = array(
-            "kunstmaan_mediabundle_FolderType[name]" => $this->getMainContext()->fixStepArgument($folderName),
-            "kunstmaan_mediabundle_FolderType[rel]" => "media",
-            "kunstmaan_mediabundle_FolderType[parent]" => "1"
-        );
+        $records = [
+            'kunstmaan_mediabundle_FolderType[name]' => $this->getMainContext()->fixStepArgument($folderName),
+            'kunstmaan_mediabundle_FolderType[rel]' => 'media',
+            'kunstmaan_mediabundle_FolderType[parent]' => '1'
+        ];
 
-        $this->getMainContext()->pressButton("Add subfolder");
+        $this->getMainContext()->pressButton('Add subfolder');
         //Wait 1 second so the modal is completely visible
         $this->getMainContext()->iWaitSeconds(1);
 
@@ -198,14 +198,14 @@ class MediaContext extends BehatContext
      * @param string $folderName
      *
      */
-    private function performFolderDelete($folderName = "")
+    private function performFolderDelete($folderName = '')
     {
-        if ($folderName != "") {
+        if ($folderName != '') {
             //Navigate to the folder we want to delete
             $this->getMainContext()->clickLink($folderName);
         }
 
-        $this->getMainContext()->pressButton("Delete this folder");
+        $this->getMainContext()->pressButton('Delete this folder');
 
         $page = $this->getMainContext()->getSession()->getPage();
         $modals = $page->findAll('xpath', "//div[contains(@id, 'delete-modal')]");

@@ -2,8 +2,8 @@
 
 namespace KumaTest\PublicBundle\Entity\Pages;
 
-use KumaTest\PublicBundle\Form\Pages\ContentPageAdminType;
 use Doctrine\ORM\Mapping as ORM;
+use KumaTest\PublicBundle\Form\Pages\ContentPageAdminType;
 use Kunstmaan\NodeBundle\Entity\AbstractPage;
 use Kunstmaan\NodeSearchBundle\Helper\SearchTypeInterface;
 use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
@@ -32,21 +32,20 @@ class ContentPage extends AbstractPage implements HasPageTemplateInterface, Sear
      */
     public function getPossibleChildTypes()
     {
-        return array (
-            array(
-                'name'  => 'ContentPage',
+        return  [
+            [
+                'name' => 'ContentPage',
                 'class' => 'KumaTest\PublicBundle\Entity\Pages\ContentPage'
-            ),
-	);
+            ],
+    ];
     }
-
 
     /**
      * {@inheritdoc}
      */
     public function getSearchType()
     {
-    	return 'Page';
+        return 'Page';
     }
 
     /**
@@ -54,7 +53,7 @@ class ContentPage extends AbstractPage implements HasPageTemplateInterface, Sear
      */
     public function getPagePartAdminConfigurations()
     {
-        return array('KumaTestPublicBundle:main');
+        return ['KumaTestPublicBundle:main'];
     }
 
     /**
@@ -62,7 +61,7 @@ class ContentPage extends AbstractPage implements HasPageTemplateInterface, Sear
      */
     public function getPageTemplates()
     {
-	    return array('KumaTestPublicBundle:contentpage');
+        return ['KumaTestPublicBundle:contentpage'];
     }
 
     /**

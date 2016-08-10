@@ -3,7 +3,6 @@
 namespace KumaTest\PublicBundle\Features\Context;
 
 use Behat\Behat\Context\BehatContext;
-use Behat\Behat\Context\Step;
 use Behat\Mink\Exception\ElementNotFoundException;
 
 /**
@@ -14,7 +13,7 @@ use Behat\Mink\Exception\ElementNotFoundException;
 class PagePartContext extends BehatContext
 {
     /**
-     * @param string $context The context
+     * @param string $context      The context
      * @param string $pagePartName The name of the pagepart
      *
      * @Given /^I add pp "([^"]*)" in section "([^"]*)"$/
@@ -30,7 +29,7 @@ class PagePartContext extends BehatContext
     }
 
     /**
-     * @param string $name The name
+     * @param string $name  The name
      * @param string $value The value
      *
      * @Given /^I fill in pp cke field "([^"]*)" with "([^"]*)"$/
@@ -45,7 +44,7 @@ class PagePartContext extends BehatContext
     }
 
     /**
-     * @param string $name The name
+     * @param string $name  The name
      * @param string $value The value
      *
      * @Given /^I fill in pp image field "([^"]*)" with "([^"]*)"$/
@@ -56,7 +55,7 @@ class PagePartContext extends BehatContext
     {
         $page = $this->getMainContext()->getSession()->getPage();
         $field = $page->find('xpath', "//label[contains(normalize-space(string(.)), '$name')]");
-        $element = $field->getParent()->find('xpath', "//input");
+        $element = $field->getParent()->find('xpath', '//input');
         $name = $element->getAttribute('name');
         $javascript = "document.getElementsByName('" . $name . "')[0].value='" . $value . "';";
         $this->getMainContext()->getSession()->executeScript($javascript);
@@ -101,7 +100,7 @@ class PagePartContext extends BehatContext
     }
 
     /**
-     * @param string $name The name
+     * @param string $name      The name
      * @param string $dateValue The date value (dd/mm/yyyy)
      * @param string $timeValue The time value (hh:ss)
      *
@@ -131,8 +130,8 @@ class PagePartContext extends BehatContext
      * Selects current node specified option if it's a select field.
      *
      * @param NodeElement $element
-     * @param string  $option
-     * @param Boolean $multiple
+     * @param string      $option
+     * @param Boolean     $multiple
      *
      * @throws ElementNotFoundException
      */
@@ -144,9 +143,9 @@ class PagePartContext extends BehatContext
             return;
         }
 
-        $opt = $element->find('named', array(
+        $opt = $element->find('named', [
             'option', $element->getSession()->getSelectorsHandler()->xpathLiteral($option)
-        ));
+        ]);
 
         if (null === $opt) {
             throw new ElementNotFoundException($element->getSession(), 'select option', 'value|text', $option);
@@ -154,7 +153,7 @@ class PagePartContext extends BehatContext
 
         $element->getSession()->getDriver()->selectOption(
             $element->getXpath(),
-            str_replace("\\", "\\\\", $opt->getValue()),
+            str_replace('\\', '\\\\', $opt->getValue()),
             $multiple
         );
     }

@@ -19,7 +19,7 @@ class ToTopPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-	return 'KumaTestPublicBundle:PageParts:ToTopPagePart/view.html.twig';
+        return 'KumaTestPublicBundle:PageParts:ToTopPagePart/view.html.twig';
     }
 
     /**
@@ -29,6 +29,6 @@ class ToTopPagePart extends AbstractPagePart
      */
     public function getDefaultAdminType()
     {
-	return new \KumaTest\PublicBundle\Form\PageParts\ToTopPagePartAdminType();
+        return new \KumaTest\PublicBundle\Form\PageParts\ToTopPagePartAdminType();
     }
 }

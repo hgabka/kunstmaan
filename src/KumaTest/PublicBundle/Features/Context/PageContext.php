@@ -3,7 +3,6 @@
 namespace KumaTest\PublicBundle\Features\Context;
 
 use Behat\Behat\Context\BehatContext;
-use Behat\Behat\Context\Step;
 use Behat\Mink\Exception\ElementNotFoundException;
 use KumaTest\PublicBundle\Entity\Pages\ContentPage;
 use KumaTest\PublicBundle\Entity\Pages\FormPage;
@@ -24,7 +23,7 @@ class PageContext extends BehatContext
     public function iPreviewPage($pageName)
     {
         $this->getMainContext()->iAmOnASpecificPage($pageName);
-        $this->getMainContext()->clickLink("Preview");
+        $this->getMainContext()->clickLink('Preview');
     }
 
     /**
@@ -45,13 +44,13 @@ class PageContext extends BehatContext
                 $pageType = FormPage::class;
                 break;
         }
-        $records = array(
-            "addpage_title" => $this->getMainContext()->fixStepArgument($pageName),
-            "addpage_type" => $this->getMainContext()->fixStepArgument($pageType)
-        );
+        $records = [
+            'addpage_title' => $this->getMainContext()->fixStepArgument($pageName),
+            'addpage_type' => $this->getMainContext()->fixStepArgument($pageType)
+        ];
 
-        $this->getMainContext()->pressButton("More");
-        $this->getMainContext()->pressButton("Add subpage");
+        $this->getMainContext()->pressButton('More');
+        $this->getMainContext()->pressButton('Add subpage');
         $this->getMainContext()->iWaitSeconds(1);
 
         $page = $this->getMainContext()->getSession()->getPage();
@@ -77,7 +76,7 @@ class PageContext extends BehatContext
     public function iSaveCurrentPage()
     {
         $this->getMainContext()->iScrollToTop();
-        $this->getMainContext()->pressButton("Save");
+        $this->getMainContext()->pressButton('Save');
     }
 
     /**
@@ -87,7 +86,7 @@ class PageContext extends BehatContext
      */
     public function iSavePage($pageName)
     {
-        $this->save($pageName, "Save");
+        $this->save($pageName, 'Save');
     }
 
     /**
@@ -97,7 +96,7 @@ class PageContext extends BehatContext
      */
     public function iSavePageAsDraft($pageName)
     {
-        $this->save($pageName, "Save as draft");
+        $this->save($pageName, 'Save as draft');
     }
 
     /**
@@ -107,11 +106,11 @@ class PageContext extends BehatContext
     private function save($pageName, $action)
     {
         // Navigate to the admin home page to see the tree
-        $this->getMainContext()->iAmOnASpecificPage("admin home");
+        $this->getMainContext()->iAmOnASpecificPage('admin home');
         // Navigate to the page we want to publish
         $this->getMainContext()->clickLink($pageName);
         // Click the save button
-        $this->getMainContext()->pressButton("More");
+        $this->getMainContext()->pressButton('More');
         $this->getMainContext()->pressButton($action);
     }
 
@@ -123,7 +122,7 @@ class PageContext extends BehatContext
     public function iGoToAdminPage($pageName)
     {
         // Navigate to the admin home page to see the tree
-        $this->getMainContext()->iAmOnASpecificPage("admin home");
+        $this->getMainContext()->iAmOnASpecificPage('admin home');
         $this->iClickAdminPage($pageName);
     }
 
@@ -180,14 +179,14 @@ class PageContext extends BehatContext
      */
     private function placePageInState($pageName, $state)
     {
-        $states = array(
+        $states = [
             'Publish' => 'pub',
             'Unpublish' => 'unpub'
-        );
+        ];
 
         if (!is_null($pageName)) {
             // Navigate to the admin home page to see the tree
-            $this->getMainContext()->iAmOnASpecificPage("admin home");
+            $this->getMainContext()->iAmOnASpecificPage('admin home');
             // Navigate to the page we want to publish
             $this->getMainContext()->clickLink($pageName);
         } else {
@@ -196,7 +195,7 @@ class PageContext extends BehatContext
 
         $page = $this->getMainContext()->getSession()->getPage();
 
-        $this->getMainContext()->pressButton("More");
+        $this->getMainContext()->pressButton('More');
         $this->getMainContext()->clickLink($state);
 
         $modals = $page->findAll('xpath', "//div[contains(@id, $states[$state])]");
@@ -224,12 +223,12 @@ class PageContext extends BehatContext
     public function iDeletePage($pageName)
     {
         // Navigate to the admin home page to see the tree
-        $this->getMainContext()->iAmOnASpecificPage("admin home");
+        $this->getMainContext()->iAmOnASpecificPage('admin home');
         // Navigate to the page we want to delete
         $this->getMainContext()->clickLink($pageName);
 
-        $this->getMainContext()->pressButton("More");
-        $this->getMainContext()->pressButton("Delete");
+        $this->getMainContext()->pressButton('More');
+        $this->getMainContext()->pressButton('Delete');
 
         $page = $this->getMainContext()->getSession()->getPage();
         $modals = $page->findAll('xpath', "//div[contains(@id, 'delete-page-modal')]");
@@ -253,12 +252,13 @@ class PageContext extends BehatContext
      * @param string $pageTemplateName
      *
      * @Given /^I change page template "([^"]*)"$/
+     *
      * @throws ElementNotFoundException
      */
     public function iChangePageTemplate($pageTemplateName)
     {
         $this->getMainContext()->iScrollToBottom();
-        $this->getMainContext()->pressButton("change-template-button");
+        $this->getMainContext()->pressButton('change-template-button');
 
         // Wait 1 second for the modal to be visible
         // Else we can get a error when running the tests.
@@ -271,7 +271,6 @@ class PageContext extends BehatContext
         }
         $radioButton->click();
 
-        $this->getMainContext()->pressButton("change-template");
+        $this->getMainContext()->pressButton('change-template');
     }
-
 }

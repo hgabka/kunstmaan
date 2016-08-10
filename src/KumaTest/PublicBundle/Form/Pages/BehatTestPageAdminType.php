@@ -3,7 +3,6 @@
 namespace KumaTest\PublicBundle\Form\Pages;
 
 use Kunstmaan\NodeBundle\Form\PageAdminType;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -18,9 +17,9 @@ class BehatTestPageAdminType extends PageAdminType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'KumaTest\PublicBundle\Entity\Pages\BehatTestPage'
-        ));
+        ]);
     }
 
     /**

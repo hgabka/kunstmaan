@@ -2,11 +2,11 @@
 
 namespace KumaTest\PublicBundle\Form\PageParts;
 
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\AbstractType;
 use Kunstmaan\MediaBundle\Form\Type\MediaType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class VideoPagePartAdminType extends AbstractType
 {
@@ -15,6 +15,7 @@ class VideoPagePartAdminType extends AbstractType
      *
      * This method is called for each type in the hierarchy starting form the
      * top most type. Type extensions can further modify the form.
+     *
      * @param FormBuilderInterface $builder The form builder
      * @param array                $options The options
      *
@@ -22,17 +23,17 @@ class VideoPagePartAdminType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('video', MediaType::class, array(
+        $builder->add('video', MediaType::class, [
             'mediatype' => 'video',
             'required' => true
-        ));
-        $builder->add('thumbnail', MediaType::class, array(
+        ]);
+        $builder->add('thumbnail', MediaType::class, [
             'mediatype' => 'image',
             'required' => false
-        ));
-        $builder->add('caption', TextType::class, array(
+        ]);
+        $builder->add('caption', TextType::class, [
             'required' => false
-        ));
+        ]);
     }
 
     /**
@@ -52,8 +53,8 @@ class VideoPagePartAdminType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'KumaTest\PublicBundle\Entity\PageParts\VideoPagePart',
-        ));
+        ]);
     }
 }

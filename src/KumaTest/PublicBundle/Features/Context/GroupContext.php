@@ -24,10 +24,10 @@ class GroupContext extends BehatContext
     {
         $steps = $this->iFillInGroupInformationForGroupWithoutRoles($groupName);
 
-        $roles = array(
-            "ROLE_ADMIN",
-            "ROLE_PERMISSIONMANAGER"
-        );
+        $roles = [
+            'ROLE_ADMIN',
+            'ROLE_PERMISSIONMANAGER'
+        ];
         foreach ($roles as $role) {
             $steps[] = new Step\When("I additionally select \"$role\" from \"group[rolesCollection][]\"");
         }
@@ -44,11 +44,11 @@ class GroupContext extends BehatContext
      */
     public function iFillInGroupInformationForGroupWithoutRoles($groupName)
     {
-        $steps = array();
+        $steps = [];
 
-        $records = array(
-            "group[name]" => $this->getMainContext()->fixStepArgument($groupName)
-        );
+        $records = [
+            'group[name]' => $this->getMainContext()->fixStepArgument($groupName)
+        ];
         foreach ($records as $field => $value) {
             $steps[] = new Step\When("I fill in \"$field\" with \"$value\"");
         }
@@ -92,5 +92,4 @@ class GroupContext extends BehatContext
             }
         }
     }
-
 }

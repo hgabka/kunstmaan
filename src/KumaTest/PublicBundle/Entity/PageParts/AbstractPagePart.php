@@ -7,5 +7,4 @@ namespace KumaTest\PublicBundle\Entity\PageParts;
  */
 abstract class AbstractPagePart extends \Kunstmaan\PagePartBundle\Entity\AbstractPagePart
 {
-
 }

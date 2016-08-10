@@ -43,7 +43,7 @@ class VideoPagePart extends AbstractPagePart
      */
     public function setCaption($caption)
     {
-	$this->caption = $caption;
+        $this->caption = $caption;
     }
 
     /**
@@ -51,7 +51,7 @@ class VideoPagePart extends AbstractPagePart
      */
     public function getCaption()
     {
-	return $this->caption;
+        return $this->caption;
     }
 
     /**
@@ -59,7 +59,7 @@ class VideoPagePart extends AbstractPagePart
      */
     public function setThumbnail($thumbnail)
     {
-	$this->thumbnail = $thumbnail;
+        $this->thumbnail = $thumbnail;
     }
 
     /**
@@ -67,7 +67,7 @@ class VideoPagePart extends AbstractPagePart
      */
     public function getThumbnail()
     {
-	return $this->thumbnail;
+        return $this->thumbnail;
     }
 
     /**
@@ -75,7 +75,7 @@ class VideoPagePart extends AbstractPagePart
      */
     public function setVideo($video)
     {
-	$this->video = $video;
+        $this->video = $video;
     }
 
     /**
@@ -83,7 +83,7 @@ class VideoPagePart extends AbstractPagePart
      */
     public function getVideo()
     {
-	return $this->video;
+        return $this->video;
     }
 
     /**
@@ -91,7 +91,7 @@ class VideoPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-	return "KumaTestPublicBundle:PageParts/VideoPagePart:view.html.twig";
+        return 'KumaTestPublicBundle:PageParts/VideoPagePart:view.html.twig';
     }
 
     /**
@@ -99,6 +99,6 @@ class VideoPagePart extends AbstractPagePart
      */
     public function getDefaultAdminType()
     {
-	return new \KumaTest\PublicBundle\Form\PageParts\VideoPagePartAdminType();
+        return new \KumaTest\PublicBundle\Form\PageParts\VideoPagePartAdminType();
     }
 }

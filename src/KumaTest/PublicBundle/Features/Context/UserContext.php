@@ -25,20 +25,20 @@ class UserContext extends BehatContext
         $username = $this->getMainContext()->fixStepArgument($username);
         $password = $this->getMainContext()->getPasswordForUsername($username);
 
-        $records = array(
-            "user[username]" => $username,
-            "user[plainPassword][first]" => $password,
-            "user[plainPassword][second]" => $password,
-            "user[email]" => "support+" . $username . "@kunstmaan.be",
-        );
+        $records = [
+            'user[username]' => $username,
+            'user[plainPassword][first]' => $password,
+            'user[plainPassword][second]' => $password,
+            'user[email]' => 'support+' . $username . '@kunstmaan.be',
+        ];
 
-        $steps = array();
+        $steps = [];
         foreach ($records as $field => $value) {
             $steps[] = new Step\When("I fill in \"$field\" with \"$value\"");
         }
 
-        $steps[] = new Step\When("I check \"user[enabled]\"");
-        $steps[] = new Step\When("I select \"Administrators\" from \"user[groups][]\"");
+        $steps[] = new Step\When('I check "user[enabled]"');
+        $steps[] = new Step\When('I select "Administrators" from "user[groups][]"');
 
         return $steps;
     }

@@ -2,9 +2,8 @@
 
 namespace KumaTest\PublicBundle\Entity\Pages;
 
-use KumaTest\PublicBundle\Form\Pages\BehatTestPageAdminType;
-
 use Doctrine\ORM\Mapping as ORM;
+use KumaTest\PublicBundle\Form\Pages\BehatTestPageAdminType;
 use Kunstmaan\NodeBundle\Entity\AbstractPage;
 use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
 use Symfony\Component\Form\AbstractType;
@@ -33,16 +32,16 @@ class BehatTestPage extends AbstractPage implements HasPageTemplateInterface
      */
     public function getPossibleChildTypes()
     {
-        return array(
-            array(
-                'name'  => 'HomePage',
+        return [
+            [
+                'name' => 'HomePage',
                 'class' => 'KumaTest\PublicBundle\Entity\Pages\HomePage'
-            ),
-            array(
-                'name'  => 'ContentPage',
+            ],
+            [
+                'name' => 'ContentPage',
                 'class' => 'KumaTest\PublicBundle\Entity\Pages\ContentPage'
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -50,7 +49,7 @@ class BehatTestPage extends AbstractPage implements HasPageTemplateInterface
      */
     public function getPagePartAdminConfigurations()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -58,7 +57,7 @@ class BehatTestPage extends AbstractPage implements HasPageTemplateInterface
      */
     public function getPageTemplates()
     {
-        return array('KumaTestPublicBundle:behat-test-page');
+        return ['KumaTestPublicBundle:behat-test-page'];
     }
 
     /**

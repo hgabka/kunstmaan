@@ -3,11 +3,11 @@
 namespace KumaTest\PublicBundle\Form\PageParts;
 
 use KumaTest\PublicBundle\Entity\PageParts\HeaderPagePart;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * HeaderPagePartAdminType
@@ -19,8 +19,9 @@ class HeaderPagePartAdminType extends AbstractType
      *
      * This method is called for each type in the hierarchy starting form the
      * top most type. Type extensions can further modify the form.
+     *
      * @param FormBuilderInterface $builder The form builder
-     * @param array $options The options
+     * @param array                $options The options
      *
      * @see FormTypeExtensionInterface::buildForm()
      */
@@ -29,18 +30,20 @@ class HeaderPagePartAdminType extends AbstractType
         parent::buildForm($builder, $options);
 
         $names = HeaderPagePart::$supportedHeaders;
-        array_walk($names, function(&$item) { $item = 'Header ' . $item; });
+        array_walk($names, function (&$item) {
+            $item = 'Header ' . $item;
+        });
 
-        $builder->add('niv', ChoiceType::class, array(
+        $builder->add('niv', ChoiceType::class, [
             'label' => 'pagepart.header.type',
             'choices' => array_combine($names, HeaderPagePart::$supportedHeaders),
             'required' => true,
                 'choices_as_values' => true
-        ));
-        $builder->add('title', TextType::class, array(
+        ]);
+        $builder->add('title', TextType::class, [
             'label' => 'pagepart.header.title',
             'required' => true
-        ));
+        ]);
     }
 
     /**
@@ -60,8 +63,8 @@ class HeaderPagePartAdminType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => '\KumaTest\PublicBundle\Entity\PageParts\HeaderPagePart'
-        ));
+        ]);
     }
 }

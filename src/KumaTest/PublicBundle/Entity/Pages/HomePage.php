@@ -2,8 +2,8 @@
 
 namespace KumaTest\PublicBundle\Entity\Pages;
 
-use KumaTest\PublicBundle\Form\Pages\HomePageAdminType;
 use Doctrine\ORM\Mapping as ORM;
+use KumaTest\PublicBundle\Form\Pages\HomePageAdminType;
 use Kunstmaan\NodeBundle\Entity\AbstractPage;
 use Kunstmaan\NodeBundle\Entity\HomePageInterface;
 use Kunstmaan\NodeSearchBundle\Helper\SearchTypeInterface;
@@ -33,16 +33,16 @@ class HomePage extends AbstractPage implements HasPageTemplateInterface, SearchT
      */
     public function getPossibleChildTypes()
     {
-        return array(
-            array(
-                'name'  => 'ContentPage',
+        return [
+            [
+                'name' => 'ContentPage',
                 'class' => 'KumaTest\PublicBundle\Entity\Pages\ContentPage'
-            ),
-            array(
-                'name'  => 'BehatTestPage',
+            ],
+            [
+                'name' => 'BehatTestPage',
                 'class' => 'KumaTest\PublicBundle\Entity\Pages\BehatTestPage'
-            )
-        );
+            ]
+        ];
     }
 
     /**
@@ -50,7 +50,7 @@ class HomePage extends AbstractPage implements HasPageTemplateInterface, SearchT
      */
     public function getPagePartAdminConfigurations()
     {
-	    return array('KumaTestPublicBundle:main');
+        return ['KumaTestPublicBundle:main'];
     }
 
     /**
@@ -58,7 +58,7 @@ class HomePage extends AbstractPage implements HasPageTemplateInterface, SearchT
      */
     public function getPageTemplates()
     {
-    	return array('KumaTestPublicBundle:homepage');
+        return ['KumaTestPublicBundle:homepage'];
     }
 
     /**
@@ -74,6 +74,6 @@ class HomePage extends AbstractPage implements HasPageTemplateInterface, SearchT
      */
     public function getSearchType()
     {
-	    return 'Home';
+        return 'Home';
     }
 }

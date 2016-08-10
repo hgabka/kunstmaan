@@ -2,13 +2,13 @@
 
 namespace KumaTest\PublicBundle\Features\Context;
 
-use Kunstmaan\BehatBundle\Features\Context\FeatureContext as AbstractContext;
 use Behat\Behat\Context\Step;
 use Behat\Mink\Element\Element;
 use Behat\Mink\Exception\ElementNotFoundException;
-use Behat\Mink\Exception\ResponseTextException;
 use Behat\Mink\Exception\ExpectationException;
+use Behat\Mink\Exception\ResponseTextException;
 use Behat\Mink\Selector\CssSelector;
+use Kunstmaan\BehatBundle\Features\Context\FeatureContext as AbstractContext;
 
 /**
  * FeatureContext
@@ -38,7 +38,7 @@ class FeatureContext extends AbstractContext
         $this->parameters = $parameters;
 
         if ($this->parameters['language'] === 'multi') {
-            $this->lang = "/en";
+            $this->lang = '/en';
         }
 
         // Load Context Class
@@ -102,7 +102,7 @@ class FeatureContext extends AbstractContext
      */
     public function getPasswordForUsername($username)
     {
-        $logins = array('admin' => 'admin', 'test' => 'test', 'dummy' => 'dummy');
+        $logins = ['admin' => 'admin', 'test' => 'test', 'dummy' => 'dummy'];
 
         return $logins[$username];
     }
@@ -117,14 +117,14 @@ class FeatureContext extends AbstractContext
      */
     public function iTryToLogInWith($username, $password)
     {
-        return array(
-            new Step\Given("I am on \"" . $this->lang . "/admin/login\""),
-            new Step\Given("I wait 1 seconds"),
-            new Step\Given("I press \"×\" if present"),
-            new Step\Given("I fill in \"username\" with \"" . $username . "\""),
-            new Step\Given("I fill in \"password\" with \"" . $password . "\""),
-            new Step\When("I press \"_submit\"")
-        );
+        return [
+            new Step\Given('I am on "' . $this->lang . '/admin/login"'),
+            new Step\Given('I wait 1 seconds'),
+            new Step\Given('I press "×" if present'),
+            new Step\Given('I fill in "username" with "' . $username . '"'),
+            new Step\Given('I fill in "password" with "' . $password . '"'),
+            new Step\When('I press "_submit"')
+        ];
     }
 
     /**
@@ -136,25 +136,24 @@ class FeatureContext extends AbstractContext
      */
     public function iChangeThePasswordTo($newPassword)
     {
-        return array(
-            new Step\Given("I fill in \"fos_user_change_password_form_current_password\" with \"" . $this->adminPassword . "\""),
-            new Step\Given("I fill in \"fos_user_change_password_form_plainPassword_first\" with \"" . $newPassword . "\""),
-            new Step\Given("I fill in \"fos_user_change_password_form_plainPassword_second\" with \"" . $newPassword . "\""),
-            new Step\When("I press \"Change password\"")
-        );
+        return [
+            new Step\Given('I fill in "fos_user_change_password_form_current_password" with "' . $this->adminPassword . '"'),
+            new Step\Given('I fill in "fos_user_change_password_form_plainPassword_first" with "' . $newPassword . '"'),
+            new Step\Given('I fill in "fos_user_change_password_form_plainPassword_second" with "' . $newPassword . '"'),
+            new Step\When('I press "Change password"')
+        ];
     }
-
 
     /**
      * @Given /^I log out$/
      */
     public function iLogOut()
     {
-        return array(
+        return [
             new Step\Given('I am on "/' . $this->lang . '/admin/dashboard"'),
             new Step\Given('I wait 2 seconds'),
             new Step\When('I follow "logout"')
-        );
+        ];
     }
 
     /**
@@ -162,7 +161,7 @@ class FeatureContext extends AbstractContext
      */
     public function iShouldSeeTheDashboard()
     {
-        $this->assertSession()->pageTextContains("Settings");
+        $this->assertSession()->pageTextContains('Settings');
     }
 
     /**
@@ -170,7 +169,7 @@ class FeatureContext extends AbstractContext
      */
     public function iShouldNotSeeTheDashboard()
     {
-        $this->assertSession()->pageTextNotContains("Settings");
+        $this->assertSession()->pageTextNotContains('Settings');
     }
 
     /**
@@ -206,8 +205,8 @@ class FeatureContext extends AbstractContext
      */
     public function goToPage($pageName)
     {
-        if (!empty($this->lang) && strncmp($pageName, "/", strlen("/"))) {
-            $pageName = "/" . $pageName;
+        if (!empty($this->lang) && strncmp($pageName, '/', strlen('/'))) {
+            $pageName = '/' . $pageName;
         }
         $this->getSession()->visit($this->locatePath($this->lang . $pageName));
     }
@@ -230,30 +229,30 @@ class FeatureContext extends AbstractContext
      */
     public function getPageUrlForPageName($pageName)
     {
-        $pages = array(
-            "forgot password" => $this->lang . "/admin/resetting/request",
-            "users" => $this->lang . "/admin/settings/users",
-            "create new user" => $this->lang . "/admin/settings/users/add",
-            "groups" => $this->lang . "/admin/settings/groups",
-            "create new group" => $this->lang . "/admin/settings/groups/add",
-            "roles" => $this->lang . "/admin/settings/roles",
-            "create new role" => $this->lang . "/admin/settings/roles/add",
-            "dashboard" => $this->lang . "/admin",
-            "login" => $this->lang . "/admin/login",
-            "media" => $this->lang . "/admin/media/folder/1",
-            "add new image" => $this->lang . "/admin/media/create/2/file",
-            "image" => $this->lang . "/admin/media/folder/2",
-            "add new video" => $this->lang . "/admin/media/create/3/video",
-            "video" => $this->lang . "/admin/media/folder/3",
-            "add new slide" => $this->lang . "/admin/media/create/4/slide",
-            "slide" => $this->lang . "/admin/media/folder/4",
-            "add new file" => $this->lang . "/admin/media/create/5/file",
-            "file" => $this->lang . "/admin/media/folder/5",
-            "bulkupload" => $this->lang . "/admin/media/bulkupload/1",
-            "admin home" => $this->lang . "/admin/nodes/1",
-            "home" => $this->lang . "/admin/nodes/1",
-            "pages" => $this->lang . "/admin/nodes"
-        );
+        $pages = [
+            'forgot password' => $this->lang . '/admin/resetting/request',
+            'users' => $this->lang . '/admin/settings/users',
+            'create new user' => $this->lang . '/admin/settings/users/add',
+            'groups' => $this->lang . '/admin/settings/groups',
+            'create new group' => $this->lang . '/admin/settings/groups/add',
+            'roles' => $this->lang . '/admin/settings/roles',
+            'create new role' => $this->lang . '/admin/settings/roles/add',
+            'dashboard' => $this->lang . '/admin',
+            'login' => $this->lang . '/admin/login',
+            'media' => $this->lang . '/admin/media/folder/1',
+            'add new image' => $this->lang . '/admin/media/create/2/file',
+            'image' => $this->lang . '/admin/media/folder/2',
+            'add new video' => $this->lang . '/admin/media/create/3/video',
+            'video' => $this->lang . '/admin/media/folder/3',
+            'add new slide' => $this->lang . '/admin/media/create/4/slide',
+            'slide' => $this->lang . '/admin/media/folder/4',
+            'add new file' => $this->lang . '/admin/media/create/5/file',
+            'file' => $this->lang . '/admin/media/folder/5',
+            'bulkupload' => $this->lang . '/admin/media/bulkupload/1',
+            'admin home' => $this->lang . '/admin/nodes/1',
+            'home' => $this->lang . '/admin/nodes/1',
+            'pages' => $this->lang . '/admin/nodes'
+        ];
 
         return $pages[$pageName];
     }
@@ -269,9 +268,9 @@ class FeatureContext extends AbstractContext
     {
         $fieldName = $this->fixStepArgument($fieldName);
 
-        return array(
+        return [
             new Step\Given("I fill in \"$fieldName\" with \"\"")
-        );
+        ];
     }
 
     /**
@@ -315,11 +314,11 @@ class FeatureContext extends AbstractContext
         foreach ($records as $field => $value) {
             //We need this check when adding additionally filters
             //because the filter_columnname[] is the same for all the filter lines
-            if ($additionally && $field=='filter_columnname[]') {
-                $filterFields = $this->getSession()->getPage()->findAll('named', array('field', $this->getSession()->getSelectorsHandler()->xpathLiteral($field)));
-                $filterField = $filterFields[count($filterFields)-1];
+            if ($additionally && $field == 'filter_columnname[]') {
+                $filterFields = $this->getSession()->getPage()->findAll('named', ['field', $this->getSession()->getSelectorsHandler()->xpathLiteral($field)]);
+                $filterField = $filterFields[count($filterFields) - 1];
             } else {
-                $filterField = $this->getSession()->getPage()->find('named', array('field', $this->getSession()->getSelectorsHandler()->xpathLiteral($field)));
+                $filterField = $this->getSession()->getPage()->find('named', ['field', $this->getSession()->getSelectorsHandler()->xpathLiteral($field)]);
             }
             if ($filterField === null) {
                 throw new ElementNotFoundException($this->getSession(), 'form field', 'id|name|label|value', $field);
@@ -342,7 +341,7 @@ class FeatureContext extends AbstractContext
      */
     public function iAdditionallyFilterOn($filterType, $filterComparator, $filterValue)
     {
-        $this->pressButton("Add filter");
+        $this->pressButton('Add filter');
         $this->iFilterOn($filterType, $filterComparator, $filterValue, true);
     }
 
@@ -359,19 +358,19 @@ class FeatureContext extends AbstractContext
         if ($additionally) {
             $selector = new CssSelector();
             //We need to know the number of filter lines present for the comparator and value field
-            $nrOfFilterOptions = count($this->getSession()->getPage()->findAll("xpath", $selector->translateToXPath('form span.js-filter-options')));
+            $nrOfFilterOptions = count($this->getSession()->getPage()->findAll('xpath', $selector->translateToXPath('form span.js-filter-options')));
 
-            return array(
-                "filter_columnname[]" => $this->fixStepArgument($filterType),
-                "filter_comparator_" . $nrOfFilterOptions => $this->fixStepArgument($filterComparator),
-                "filter_value_" . $nrOfFilterOptions => $this->fixStepArgument($filterValue),
-            );
+            return [
+                'filter_columnname[]' => $this->fixStepArgument($filterType),
+                'filter_comparator_' . $nrOfFilterOptions => $this->fixStepArgument($filterComparator),
+                'filter_value_' . $nrOfFilterOptions => $this->fixStepArgument($filterValue),
+            ];
         } else {
-            return array(
-                "add-first-filter" => $this->fixStepArgument($filterType),
-                "filter_comparator_1" => $this->fixStepArgument($filterComparator),
-                "filter_value_1" => $this->fixStepArgument($filterValue),
-            );
+            return [
+                'add-first-filter' => $this->fixStepArgument($filterType),
+                'filter_comparator_1' => $this->fixStepArgument($filterComparator),
+                'filter_value_1' => $this->fixStepArgument($filterValue),
+            ];
         }
     }
 
@@ -383,8 +382,8 @@ class FeatureContext extends AbstractContext
     public function iShouldSeeOr($text1, $text2)
     {
         $actual = $this->getSession()->getPage()->getText();
-        $regex1  = '/' . preg_quote($text1, '/') . '/ui';
-        $regex2  = '/' . preg_quote($text2, '/') . '/ui';
+        $regex1 = '/' . preg_quote($text1, '/') . '/ui';
+        $regex2 = '/' . preg_quote($text2, '/') . '/ui';
 
         if (!(preg_match($regex1, $actual) || preg_match($regex2, $actual))) {
             $message = sprintf('The text "%s" was not found anywhere in the text of the current page.', $text2);
@@ -427,14 +426,16 @@ class FeatureContext extends AbstractContext
      *
      * @param string $href
      * @param string $value
-     * @param bool $newWindow
+     * @param bool   $newWindow
      *
      * @return bool
+     *
      * @throws \Behat\Mink\Exception\ResponseTextException
      */
-    protected function checkLink($href, $value = null, $newWindow = false) {
+    protected function checkLink($href, $value = null, $newWindow = false)
+    {
         $page = $this->getSession()->getPage();
-        $element = $page->find('xpath', "//a[contains(@href, '" . $href . "')" . ($newWindow ? 'and contains(@target, "_blank")' : '') . "]");
+        $element = $page->find('xpath', "//a[contains(@href, '" . $href . "')" . ($newWindow ? 'and contains(@target, "_blank")' : '') . ']');
         if ($element) {
             if (!is_null($value)) {
                 if ($value == $element->getText()) {
@@ -454,10 +455,10 @@ class FeatureContext extends AbstractContext
      *
      * @throws ResponseTextException
      */
-    public function iShouldSeeImage($path, $altText = "")
+    public function iShouldSeeImage($path, $altText = '')
     {
         $page = $this->getSession()->getPage();
-        $element = $page->find('xpath', "//img[contains(@src, '" . $path . "')" . ($altText ? 'and contains(@alt, "' . $altText . '")' : '') . "]");
+        $element = $page->find('xpath', "//img[contains(@src, '" . $path . "')" . ($altText ? 'and contains(@alt, "' . $altText . '")' : '') . ']');
         if ($element) {
             return true;
         }
@@ -474,6 +475,7 @@ class FeatureContext extends AbstractContext
      * @param string  $locator  selector locator
      *
      * @return array
+     *
      * @throws ExpectationException
      */
     public function findAndClickButton($element, $selector, $locator)
@@ -525,7 +527,7 @@ class FeatureContext extends AbstractContext
      */
     public function iWaitSeconds($time)
     {
-        $this->getSession()->wait($time*1000);
+        $this->getSession()->wait($time * 1000);
     }
 
     /**
@@ -545,7 +547,7 @@ class FeatureContext extends AbstractContext
      */
     public function iScrollToTop()
     {
-        $this->getSession()->executeScript("window.scrollTo(0, 0)");
+        $this->getSession()->executeScript('window.scrollTo(0, 0)');
     }
 
     /**
@@ -553,7 +555,6 @@ class FeatureContext extends AbstractContext
      */
     public function iScrollToBottom()
     {
-        $this->getSession()->executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        $this->getSession()->executeScript('window.scrollTo(0, document.body.scrollHeight)');
     }
-
 }

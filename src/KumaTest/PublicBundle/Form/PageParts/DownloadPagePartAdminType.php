@@ -2,10 +2,10 @@
 
 namespace KumaTest\PublicBundle\Form\PageParts;
 
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\AbstractType;
 use Kunstmaan\MediaBundle\Form\Type\MediaType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * DownloadPagePartAdminType
@@ -17,6 +17,7 @@ class DownloadPagePartAdminType extends AbstractType
      *
      * This method is called for each type in the hierarchy starting form the
      * top most type. Type extensions can further modify the form.
+     *
      * @param FormBuilderInterface $builder The form builder
      * @param array                $options The options
      *
@@ -24,9 +25,9 @@ class DownloadPagePartAdminType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('media', MediaType::class, array(
+        $builder->add('media', MediaType::class, [
             'label' => 'mediapagepart.download.choosefile'
-        ));
+        ]);
     }
 
     /**
@@ -46,8 +47,8 @@ class DownloadPagePartAdminType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'KumaTest\PublicBundle\Entity\PageParts\DownloadPagePart',
-        ));
+        ]);
     }
 }

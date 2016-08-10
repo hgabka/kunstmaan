@@ -5,8 +5,6 @@ namespace KumaTest\PublicBundle\Form\Pages;
 use Kunstmaan\NodeBundle\Form\PageAdminType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Kunstmaan\MediaBundle\Form\Type\MediaType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 /**
  * The admin type for content pages
@@ -38,9 +36,9 @@ class ContentPageAdminType extends PageAdminType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'KumaTest\PublicBundle\Entity\Pages\ContentPage'
-        ));
+        ]);
     }
 
     /**
@@ -50,6 +48,6 @@ class ContentPageAdminType extends PageAdminType
      */
     public function getBlockPrefix()
     {
-	return 'contentpage';
+        return 'contentpage';
     }
 }

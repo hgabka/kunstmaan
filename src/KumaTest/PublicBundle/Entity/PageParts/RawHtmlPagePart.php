@@ -24,7 +24,7 @@ class RawHtmlPagePart extends AbstractPagePart
      */
     public function getContent()
     {
-	return $this->content;
+        return $this->content;
     }
 
     /**
@@ -34,9 +34,9 @@ class RawHtmlPagePart extends AbstractPagePart
      */
     public function setContent($content)
     {
-	$this->content = $content;
+        $this->content = $content;
 
-	return $this;
+        return $this;
     }
 
     /**
@@ -46,7 +46,7 @@ class RawHtmlPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-	return 'KumaTestPublicBundle:PageParts:RawHtmlPagePart/view.html.twig';
+        return 'KumaTestPublicBundle:PageParts:RawHtmlPagePart/view.html.twig';
     }
 
     /**
@@ -56,6 +56,6 @@ class RawHtmlPagePart extends AbstractPagePart
      */
     public function getDefaultAdminType()
     {
-	return new \KumaTest\PublicBundle\Form\PageParts\RawHtmlPagePartAdminType();
+        return new \KumaTest\PublicBundle\Form\PageParts\RawHtmlPagePartAdminType();
     }
 }

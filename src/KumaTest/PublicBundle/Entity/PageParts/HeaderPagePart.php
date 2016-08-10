@@ -28,7 +28,7 @@ class HeaderPagePart extends AbstractPagePart
     /**
      * @var array Supported header sizes
      */
-    public static $supportedHeaders = array(1, 2, 3, 4, 5, 6);
+    public static $supportedHeaders = [1, 2, 3, 4, 5, 6];
 
     /**
      * Set niv
@@ -39,9 +39,9 @@ class HeaderPagePart extends AbstractPagePart
      */
     public function setNiv($niv)
     {
-	$this->niv = $niv;
+        $this->niv = $niv;
 
-	return $this;
+        return $this;
     }
 
     /**
@@ -51,7 +51,7 @@ class HeaderPagePart extends AbstractPagePart
      */
     public function getNiv()
     {
-	return $this->niv;
+        return $this->niv;
     }
 
     /**
@@ -61,9 +61,9 @@ class HeaderPagePart extends AbstractPagePart
      */
     public function setTitle($title)
     {
-	$this->title = $title;
+        $this->title = $title;
 
-	return $this;
+        return $this;
     }
 
     /**
@@ -71,7 +71,7 @@ class HeaderPagePart extends AbstractPagePart
      */
     public function getTitle()
     {
-	return $this->title;
+        return $this->title;
     }
 
     /**
@@ -81,7 +81,7 @@ class HeaderPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-	return 'KumaTestPublicBundle:PageParts:HeaderPagePart/view.html.twig';
+        return 'KumaTestPublicBundle:PageParts:HeaderPagePart/view.html.twig';
     }
 
     /**
@@ -91,6 +91,6 @@ class HeaderPagePart extends AbstractPagePart
      */
     public function getDefaultAdminType()
     {
-	return new \KumaTest\PublicBundle\Form\PageParts\HeaderPagePartAdminType();
+        return new \KumaTest\PublicBundle\Form\PageParts\HeaderPagePartAdminType();
     }
 }

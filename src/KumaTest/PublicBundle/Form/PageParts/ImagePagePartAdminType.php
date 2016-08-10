@@ -2,13 +2,13 @@
 
 namespace KumaTest\PublicBundle\Form\PageParts;
 
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\AbstractType;
 use Kunstmaan\MediaBundle\Form\Type\MediaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Kunstmaan\NodeBundle\Form\Type\URLChooserType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * ImagePagePartAdminType
@@ -20,6 +20,7 @@ class ImagePagePartAdminType extends AbstractType
      *
      * This method is called for each type in the hierarchy starting form the
      * top most type. Type extensions can further modify the form.
+     *
      * @param FormBuilderInterface $builder The form builder
      * @param array                $options The options
      *
@@ -29,26 +30,26 @@ class ImagePagePartAdminType extends AbstractType
     {
         parent::buildForm($builder, $options);
 
-        $builder->add('media', MediaType::class, array(
+        $builder->add('media', MediaType::class, [
             'label' => 'mediapagepart.image.choosefile',
             'mediatype' => 'image',
             'required' => true
-        ));
-        $builder->add('caption', TextType::class, array(
+        ]);
+        $builder->add('caption', TextType::class, [
             'required' => false
-        ));
-        $builder->add('altText', TextType::class, array(
+        ]);
+        $builder->add('altText', TextType::class, [
             'required' => false,
             'label' => 'mediapagepart.image.alttext'
-        ));
-        $builder->add('link', URLChooserType::class, array(
+        ]);
+        $builder->add('link', URLChooserType::class, [
             'required' => false,
             'label' => 'mediapagepart.image.link'
-        ));
-        $builder->add('openInNewWindow', CheckboxType::class, array(
+        ]);
+        $builder->add('openInNewWindow', CheckboxType::class, [
             'required' => false,
             'label' => 'mediapagepart.image.openinnewwindow'
-        ));
+        ]);
     }
 
     /**
@@ -68,8 +69,8 @@ class ImagePagePartAdminType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => '\KumaTest\PublicBundle\Entity\PageParts\ImagePagePart',
-        ));
+        ]);
     }
 }

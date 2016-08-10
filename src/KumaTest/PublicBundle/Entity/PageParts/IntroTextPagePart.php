@@ -28,9 +28,9 @@ class IntroTextPagePart extends AbstractPagePart
      */
     public function setContent($content)
     {
-	$this->content = $content;
+        $this->content = $content;
 
-	return $this;
+        return $this;
     }
 
     /**
@@ -38,7 +38,7 @@ class IntroTextPagePart extends AbstractPagePart
      */
     public function getContent()
     {
-	return $this->content;
+        return $this->content;
     }
 
     /**
@@ -48,7 +48,7 @@ class IntroTextPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-	return 'KumaTestPublicBundle:PageParts:IntroTextPagePart/view.html.twig';
+        return 'KumaTestPublicBundle:PageParts:IntroTextPagePart/view.html.twig';
     }
 
     /**
@@ -58,6 +58,6 @@ class IntroTextPagePart extends AbstractPagePart
      */
     public function getDefaultAdminType()
     {
-	return new \KumaTest\PublicBundle\Form\PageParts\IntroTextPagePartAdminType();
+        return new \KumaTest\PublicBundle\Form\PageParts\IntroTextPagePartAdminType();
     }
 }

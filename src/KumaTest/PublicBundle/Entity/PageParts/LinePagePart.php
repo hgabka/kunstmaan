@@ -19,7 +19,7 @@ class LinePagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-	return 'KumaTestPublicBundle:PageParts:LinePagePart/view.html.twig';
+        return 'KumaTestPublicBundle:PageParts:LinePagePart/view.html.twig';
     }
 
     /**
@@ -29,6 +29,6 @@ class LinePagePart extends AbstractPagePart
      */
     public function getDefaultAdminType()
     {
-	return new \KumaTest\PublicBundle\Form\PageParts\LinePagePartAdminType();
+        return new \KumaTest\PublicBundle\Form\PageParts\LinePagePartAdminType();
     }
 }

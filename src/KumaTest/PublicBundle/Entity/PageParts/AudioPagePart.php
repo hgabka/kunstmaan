@@ -26,7 +26,7 @@ class AudioPagePart extends AbstractPagePart
      */
     public function getMedia()
     {
-	return $this->media;
+        return $this->media;
     }
 
     /**
@@ -38,9 +38,9 @@ class AudioPagePart extends AbstractPagePart
      */
     public function setMedia($media)
     {
-	$this->media = $media;
+        $this->media = $media;
 
-	return $this;
+        return $this;
     }
 
     /**
@@ -48,7 +48,7 @@ class AudioPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-	return "KumaTestPublicBundle:PageParts/AudioPagePart:view.html.twig";
+        return 'KumaTestPublicBundle:PageParts/AudioPagePart:view.html.twig';
     }
 
     /**
@@ -56,6 +56,6 @@ class AudioPagePart extends AbstractPagePart
      */
     public function getDefaultAdminType()
     {
-	return new \KumaTest\PublicBundle\Form\PageParts\AudioPagePartAdminType();
+        return new \KumaTest\PublicBundle\Form\PageParts\AudioPagePartAdminType();
     }
 }
